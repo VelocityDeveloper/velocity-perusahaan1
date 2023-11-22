@@ -1,6 +1,6 @@
 Velocity Child Theme Paket F Perusahaan 1
 =================
-[:earth_asia:	perusahaan1.velocitydeveloper.com](https://perusahaan1.velocitydeveloper.com/)
+[perusahaan1.velocitydeveloper.com](https://perusahaan1.velocitydeveloper.com/)
 
 Child Theme for the Velocity System WordPress theme.
 
