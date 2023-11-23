@@ -27,13 +27,13 @@
                 <div class="col-md-4">
                     <div class="h-contact"><span class="fa fa-phone colortheme"></span>
                         <div class="text-dark mb-1">Phone</div>
-                        <div class="text-secondary mb-2"><small><?php echo velocitytheme_option('velocity_phone'); ?></small></div>
+                        <div class="text-secondary mb-2"><small><a class="text-secondary" href="tel:<?php echo velocitytheme_option('velocity_phone'); ?>"><?php echo velocitytheme_option('velocity_phone'); ?></a></small></div>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="h-contact"><span class="far fa-envelope colortheme"></span>
                         <div class="text-dark mb-1">Email</div>
-                        <div class="text-secondary mb-2"><small><?php echo velocitytheme_option('velocity_email'); ?></small></div>
+                        <div class="text-secondary mb-2"><small><a class="text-secondary" href="mailto:<?php echo velocitytheme_option('velocity_email'); ?>"><?php echo velocitytheme_option('velocity_email'); ?></a></small></div>
                     </div>
                 </div>
             </div>
