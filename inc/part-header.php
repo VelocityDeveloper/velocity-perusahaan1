@@ -88,11 +88,13 @@
         <?php if ($pagebg) { ?>
             <div class="page-banner position-relative overflow-hidden">
                 <div class="overelay position-absolute start-0 top-0 h-100 w-100" style="background-color: rgba(0,0,0,0.2);"></div>
-                <div class="container row m-0 align-items-center">
-                    <div class="col-md-6 text-md-start z-1">
-                        <?php velocity_title(); ?>
+                <div class="container">
+                    <div class="row m-0 align-items-center">
+                        <div class="col-md-6 text-md-start z-1">
+                            <?php velocity_title(); ?>
+                        </div>
+                        <div class="col-md-6 text-md-end z-1"><?php echo do_shortcode('[vd-breadcrumbs]'); ?></div>
                     </div>
-                    <div class="col-md-6 text-md-end z-1"><?php echo do_shortcode('[vd-breadcrumbs]'); ?></div>
                 </div>
             </div>
         <?php } ?>
