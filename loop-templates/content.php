@@ -15,9 +15,11 @@ $bulan     = array("", "Januari", "Februari", "Maret", "April", "Mei", "Juni", "
 <article <?php post_class('mb-5'); ?> id="post-<?php the_ID(); ?>">
 
     <?php if (has_post_thumbnail()) { ?>
-        <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
-            <?php the_post_thumbnail('full', array('class' => 'w-100 mb-3')); ?>
-        </a>
+        <div class="ratio" style="--bs-aspect-ratio: 60%;">
+            <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
+                <?php the_post_thumbnail('full', array('class' => 'w-100 mb-3')); ?>
+            </a>
+        </div>
     <?php } ?>
 
     <header class="entry-header">

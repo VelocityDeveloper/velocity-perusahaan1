@@ -79,8 +79,8 @@ if (velocitytheme_option('velocity_banner1')) { ?>
             <div class="home-gallery pb-4">
                 <?php foreach ($galleries as $gallery) {
                     if (!empty($gallery)) {
-                        $url = aq_resize($gallery['velocity_gallery_image'], 400, 300, true, true, false);
-                        echo '<div class="p-2"><img class="w-100" src="' . $url . '" /></div>';
+                        $url = $gallery['velocity_gallery_image'];
+                        echo '<div class="p-2 ratio ratio-4x3"><img class="w-100" src="' . $url . '" /></div>';
                     }
                 } ?>
             </div>
@@ -107,13 +107,14 @@ if (velocitytheme_option('velocity_banner1')) { ?>
                 <?php while ($wp_query->have_posts()) : $wp_query->the_post();
                     $content = get_the_content();
                     $trimmed_content = wp_trim_words($content, 15);
-                    $full_url = get_the_post_thumbnail_url(get_the_ID(), 'full');
-                    $url = aq_resize($full_url, 400, 300, true, $single = true, $upscale = false); ?>
+                    $full_url = get_the_post_thumbnail_url(get_the_ID(), 'full'); ?>
                     <div class="col-sm-4">
-                        <div class="card w-100 text-left rounded-0 border-0">
-                            <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
-                                <img class="card-img-top rounded-0 w-100" src="<?php echo $url; ?>">
-                            </a>
+                        <div class="card w-100 text-left ratio ratio-4x3 rounded-0 border-0">
+                            <div class="image-news ratio" style="--bs-aspect-ratio: 70%;">
+                                <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
+                                    <img class="card-img-top rounded-0 w-100" src="<?php echo $full_url; ?>">
+                                </a>
+                            </div>
                             <div class="py-3">
                                 <h4 class="card-title mb-3" style="line-height: 1.4;"><a class="text-dark" href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h4>
                                 <div class="separator-hitam"></div>
