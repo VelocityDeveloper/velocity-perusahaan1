@@ -109,7 +109,7 @@ if (velocitytheme_option('velocity_banner1')) { ?>
                     $trimmed_content = wp_trim_words($content, 15);
                     $full_url = get_the_post_thumbnail_url(get_the_ID(), 'full'); ?>
                     <div class="col-sm-4">
-                        <div class="card w-100 text-left ratio ratio-4x3 rounded-0 border-0">
+                        <div class="card w-100 text-left rounded-0 border-0">
                             <div class="image-news ratio" style="--bs-aspect-ratio: 70%;">
                                 <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
                                     <img class="card-img-top rounded-0 w-100" src="<?php echo $full_url; ?>">
