@@ -28,30 +28,32 @@ if (velocitytheme_option('velocity_banner1')) { ?>
         <!-- Layanan section -->
         <div class="row text-center mb-5 frame-layanan mx-0 px-0">
             <?php $layanans = velocitytheme_option('velocity_layanan_repeat');
-            foreach ($layanans as $layanan) : ?>
-                <div class="col-sm-4 p-0 mx-auto">
-                    <div class="card-layanan position-relative text-center">
-                        <div class="img-layanan ratio" style="--bs-aspect-ratio: 67%;">
-                            <img src="<?php echo $layanan['velocity_layanan_image']; ?>" />
-                        </div>
-
-                        <div class="icon-layanan">
-                            <i class="fas fa-<?php echo $layanan['velocity_icon']; ?>"> </i>
-                        </div>
-
-                        <div class="p-3">
-                            <h5 class="title-layanan">
-                                <strong class="text-dark"><?php echo $layanan['velocity_layanan']; ?></strong>
-                            </h5>
-                            <div class="separator-layanan bg-colortheme"></div>
-                            <div class="text-layanan">
-                                <?php echo $layanan['velocity_text']; ?>
+            if ($layanans) :
+                foreach ($layanans as $layanan) : ?>
+                    <div class="col-sm-4 p-0 mx-auto">
+                        <div class="card-layanan position-relative text-center">
+                            <div class="img-layanan ratio" style="--bs-aspect-ratio: 67%;">
+                                <img src="<?php echo $layanan['velocity_layanan_image']; ?>" />
                             </div>
+
+                            <div class="icon-layanan">
+                                <i class="fas fa-<?php echo $layanan['velocity_icon']; ?>"> </i>
+                            </div>
+
+                            <div class="p-3">
+                                <h5 class="title-layanan">
+                                    <strong class="text-dark"><?php echo $layanan['velocity_layanan']; ?></strong>
+                                </h5>
+                                <div class="separator-layanan bg-colortheme"></div>
+                                <div class="text-layanan">
+                                    <?php echo $layanan['velocity_text']; ?>
+                                </div>
+                            </div>
+                            <a class="link-layanan" href="<?php echo $layanan['velocity_link']; ?>"></a>
                         </div>
-                        <a class="link-layanan" href="<?php echo $layanan['velocity_link']; ?>"></a>
                     </div>
-                </div>
-            <?php endforeach; ?>
+                <?php endforeach; ?>
+            <?php endif; ?>
         </div>
 
         <!-- Sambutan section -->
