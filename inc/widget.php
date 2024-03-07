@@ -10,9 +10,9 @@ if (!function_exists('justg_widgets_init')) {
                 'id'            => 'main-sidebar',
                 'description'   => __('Main sidebar widget area', 'justg'),
                 'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-                'after_widget'  => '</div></aside>',
-                'before_title'  => '<h3 class="widget-title fw-bold"><span>',
-                'after_title'   => '</span></h3><div class="mt-4 mb-2">',
+                'after_widget'  => '</aside>',
+                'before_title'  => '<h3 class="widget-title fw-bold mb-4"><span>',
+                'after_title'   => '</span></h3>',
                 'show_in_rest'   => false,
             )
         );
