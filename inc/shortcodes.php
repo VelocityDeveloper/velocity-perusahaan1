@@ -131,7 +131,7 @@ function vd_datepost()
     $blnpost = get_the_date('n', $postID);
     $tahunpost = get_the_date('Y', $postID);
 
-    $hari = [1 => 'Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+    $hari = [0 => 'Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
     $bulan = [1 => 'Januari', 'Februari', 'Maret', 'pril', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
 
     echo '<div class="text-secondary">Diterbitkan ' . $hari[$haripost] . ',' . $tglpost . ' ' . $bulan[$blnpost] . ' ' . $tahunpost . '</div>';

@@ -28,32 +28,30 @@ if (velocitytheme_option('velocity_banner1')) { ?>
         <!-- Layanan section -->
         <div class="row text-center mb-5 frame-layanan mx-0 px-0">
             <?php $layanans = velocitytheme_option('velocity_layanan_repeat');
-            if ($layanans) :
-                foreach ($layanans as $layanan) : ?>
-                    <div class="col-sm-4 p-0 mx-auto">
-                        <div class="card-layanan position-relative text-center">
-                            <div class="img-layanan ratio" style="--bs-aspect-ratio: 67%;">
-                                <img src="<?php echo $layanan['velocity_layanan_image']; ?>" />
-                            </div>
-
-                            <div class="icon-layanan">
-                                <i class="fas fa-<?php echo $layanan['velocity_icon']; ?>"> </i>
-                            </div>
-
-                            <div class="p-3">
-                                <h5 class="title-layanan">
-                                    <strong class="text-dark"><?php echo $layanan['velocity_layanan']; ?></strong>
-                                </h5>
-                                <div class="separator-layanan bg-colortheme"></div>
-                                <div class="text-layanan">
-                                    <?php echo $layanan['velocity_text']; ?>
-                                </div>
-                            </div>
-                            <a class="link-layanan" href="<?php echo $layanan['velocity_link']; ?>"></a>
+            foreach ($layanans as $layanan) : ?>
+                <div class="col-sm-4 p-0 mx-auto">
+                    <div class="card-layanan position-relative text-center">
+                        <div class="img-layanan ratio" style="--bs-aspect-ratio: 67%;">
+                            <img src="<?php echo $layanan['velocity_layanan_image']; ?>" />
                         </div>
+
+                        <div class="icon-layanan">
+                            <i class="fas fa-<?php echo $layanan['velocity_icon']; ?>"> </i>
+                        </div>
+
+                        <div class="p-3">
+                            <h5 class="title-layanan">
+                                <strong class="text-dark"><?php echo $layanan['velocity_layanan']; ?></strong>
+                            </h5>
+                            <div class="separator-layanan bg-colortheme"></div>
+                            <div class="text-layanan">
+                                <?php echo $layanan['velocity_text']; ?>
+                            </div>
+                        </div>
+                        <a class="link-layanan" href="<?php echo $layanan['velocity_link']; ?>"></a>
                     </div>
-                <?php endforeach; ?>
-            <?php endif; ?>
+                </div>
+            <?php endforeach; ?>
         </div>
 
         <!-- Sambutan section -->
@@ -109,7 +107,7 @@ if (velocitytheme_option('velocity_banner1')) { ?>
                 <?php while ($wp_query->have_posts()) : $wp_query->the_post();
                     $content = get_the_content();
                     $trimmed_content = wp_trim_words($content, 15);
-                    $full_url = get_the_post_thumbnail_url(get_the_ID(), 'full'); ?>
+                    $full_url = get_the_post_thumbnail_url(get_the_ID(), 'full');?>
                     <div class="col-sm-4">
                         <div class="card w-100 text-left rounded-0 border-0">
                             <div class="image-news ratio" style="--bs-aspect-ratio: 70%;">

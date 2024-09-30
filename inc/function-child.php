@@ -27,6 +27,10 @@ add_action('after_setup_theme', 'velocitychild_theme_setup', 9);
 
 function velocitychild_theme_setup()
 {
+
+    // Load justg_child_enqueue_parent_style after theme setup
+    add_action('wp_enqueue_scripts', 'justg_child_enqueue_parent_style', 20);
+
     if (class_exists('Kirki')) :
 
         Kirki::add_panel('panel_velocity', [
@@ -267,7 +271,7 @@ function velocitychild_theme_setup()
                 'priority' => 10,
             ]
         );
-        new \Kirki\Field\Textarea(
+        new \Kirki\Field\Editor(
             [
                 'settings'    => 'velocity_sambutan',
                 'label'       => esc_html__('Isi Sambutan', 'justg'),

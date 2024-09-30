@@ -1,6 +1,6 @@
-Velocity Child Theme Paket F Perusahaan 1
+Velocity Child Theme Paket F Perusahaan 2
 =================
-[perusahaan1.velocitydeveloper.com](https://perusahaan1.velocitydeveloper.com/)
+[:earth_asia:	perusahaan2.velocitydeveloper.com](https://www.perusahaan2.velocitydeveloper.com/)
 
 Child Theme for the Velocity System WordPress theme.
 
@@ -8,5 +8,5 @@ Child Theme for the Velocity System WordPress theme.
 Theme Velocity versi 2.4.0 keatas , [Download](https://github.com/VelocityDeveloper/velocity/releases/download/v2.4.0/velocity.zip)
 
 ### Usage
-Simply download the zip and upload the zip (velocity-perusahaan1.zip) under your WordPress dashboard at Appearance > Themes. Or extract and upload via FTP at wp-content/themes/.
+Simply download the zip and upload the zip (velocity-tour3.zip) under your WordPress dashboard at Appearance > Themes. Or extract and upload via FTP at wp-content/themes/.
 

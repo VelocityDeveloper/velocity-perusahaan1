@@ -12,8 +12,8 @@ if (!defined('ABSPATH')) {
  *
  * @link http://codex.wordpress.org/Child_Themes
  */
-if (!function_exists('justg_child_enqueue_script_style')) {
-    function justg_child_enqueue_script_style()
+if (!function_exists('justg_child_enqueue_parent_style')) {
+    function justg_child_enqueue_parent_style()
     {
         // Dynamically get version number of the parent stylesheet (lets browsers re-cache your stylesheet when you update your theme)
         $parenthandle = 'parent-style';
@@ -27,16 +27,17 @@ if (!function_exists('justg_child_enqueue_script_style')) {
             $theme->parent()->get('Version')
         );
 
-        $css_version = $theme->parent()->get('Version') . '.' . filemtime(get_stylesheet_directory() . '/css/custom.css');
+        // $css_version = $theme->parent()->get('Version') . '.' . filemtime( get_stylesheet_directory() . '/css/custom.css' );
+        $css_version = $theme->parent()->get('Version');
         wp_enqueue_style('slick-style', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css', $css_version);
         wp_enqueue_style('slick-style-theme', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css', $css_version);
-        wp_enqueue_style('fontawesome5-style', 'https://use.fontawesome.com/releases/v5.15.4/css/all.css', $css_version);
-        wp_enqueue_style('velocity-google-fonts', 'https://fonts.googleapis.com/css?family=Playfair+Display|Space+Mono|Stint+Ultra+Expanded&display=swap', $css_version);
+        wp_enqueue_style('fontawesome5-style', 'https://use.fontawesome.com/releases/v5.15.4/css/all.css', array(), false);  // if the parent theme code has a dependency, copy it to here$css_version);
+        wp_enqueue_style('custom-style', get_stylesheet_directory_uri() . '/css/custom.css', array(), false);  // if the parent theme code has a dependency, copy it to here$css_version);
+
         wp_enqueue_style(
-            'custom-style',
-            get_stylesheet_directory_uri() . '/css/custom.css',
-            array(),  // if the parent theme code has a dependency, copy it to here
-            $css_version
+            'velocity-google-fonts',
+            'https://fonts.googleapis.com/css?family=Playfair+Display|Space+Mono|Stint+Ultra+Expanded&display=swap',
+            false
         );
 
         wp_enqueue_style(
@@ -50,5 +51,4 @@ if (!function_exists('justg_child_enqueue_script_style')) {
         wp_enqueue_script('slick-scripts', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js', array(), $js_version, true);
         wp_enqueue_script('justg-custom-scripts', get_stylesheet_directory_uri() . '/js/custom.js', array(), $js_version, true);
     }
-    add_action('wp_enqueue_scripts', 'justg_child_enqueue_script_style', 20);
 }

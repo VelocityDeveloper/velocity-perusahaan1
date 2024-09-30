@@ -209,11 +209,11 @@
 	object-fit: cover;
 }
 .velocity-banner-title {
-    font-size: 6.7vw !important;
+    font-size: 6.7vw;
     font-family: Calibri, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
 }
 .velocity-banner-subtitle {
-    font-size: 2vw !important;
+    font-size: 2vw;
 }
 .vlogo a {
 	margin-right: 0 !important;
