@@ -31,7 +31,7 @@ if (!function_exists('justg_child_enqueue_parent_style')) {
         $css_version = $theme->parent()->get('Version');
         wp_enqueue_style('slick-style', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css', $css_version);
         wp_enqueue_style('slick-style-theme', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css', $css_version);
-        wp_enqueue_style('fontawesome5-style', 'https://use.fontawesome.com/releases/v5.15.4/css/all.css', array(), false);  // if the parent theme code has a dependency, copy it to here$css_version);
+        wp_enqueue_style('fontawesome5-style', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css', array(), false);  // if the parent theme code has a dependency, copy it to here$css_version);
         wp_enqueue_style('custom-style', get_stylesheet_directory_uri() . '/css/custom.css', array(), false);  // if the parent theme code has a dependency, copy it to here$css_version);
 
         wp_enqueue_style(
