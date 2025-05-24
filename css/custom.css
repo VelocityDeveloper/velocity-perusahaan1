@@ -152,10 +152,24 @@
 	margin-bottom: 0;
 }
 .entry-content ul > li {
-    padding-left: .75rem;
+    padding-left: 1.2rem;
 }
 .entry-content ul {
-    padding-left: 1rem !important;
+    padding-left: 0 !important;
+}
+.entry-content ul li {
+    position: relative;
+    margin-bottom: 3px;
+}
+.entry-content ul li::before {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background-color: var(--bs-primary);
+    border-radius: 30px;
+    left: 5px;
+    top: 5px;
 }
 .widget_calendar caption {
     caption-side: top;
@@ -518,6 +532,3 @@ a:hover {
         padding: 55px 0 40px !important;
     }
 }
-
-
-
