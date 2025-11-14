@@ -74,19 +74,27 @@ wp.customize.bind('ready', function(){
     });
   })();
 
-  function initRepeater(id, fields, limit){
+  function initRepeater(id, fields, limit, meta){
     var el=controlEl(id); if(!el.length) return; var hidden=getHidden(id);
     var arr=parseJSON(hidden.val()); if(!Array.isArray(arr)) arr=[];
-    var list=$('<div class="velocity-repeater-list"/>'); var add=$('<button type="button" class="button">Add</button>');
+    var list=$('<div class="velocity-repeater-list"/>'); var addText=(meta&&meta.addLabel)?meta.addLabel:'Add'; var add=$('<button type="button" class="button"></button>').text(addText);
     function render(){
       list.empty();
       arr.forEach(function(item,idx){
         var row=$('<div class="velocity-repeater-item"/>');
         fields.forEach(function(f){
-          var input=$('<input type="text" class="widefat"/>').val(item[f]||'');
-          input.attr('placeholder',f);
+          var label=(meta&&meta.labels&&meta.labels[f])?meta.labels[f]:f;
+          var desc=(meta&&meta.descriptions&&meta.descriptions[f])?meta.descriptions[f]:'';
+          var input;
+          if(f==='velocity_text'){
+            input=$('<textarea class="widefat" rows="4"/>').val(item[f]||'');
+          }else{
+            input=$('<input type="text" class="widefat"/>').val(item[f]||'');
+          }
           input.on('input change',function(){ item[f]=input.val(); sync(); });
-          row.append($('<label/>').text(f)).append(input);
+          row.append($('<label/>').text(label));
+          if(desc){ row.append($('<small class="description"/>').text(desc)); }
+          row.append(input);
         });
         var pickers={};
         fields.filter(function(f){return /image$/.test(f);}).forEach(function(f){
@@ -112,7 +120,20 @@ wp.customize.bind('ready', function(){
     render(); sync();
   }
 
-  initRepeater('velocity_layanan_repeat', ['velocity_layanan_image','velocity_layanan','velocity_icon','velocity_text','velocity_link'], 3);
+  initRepeater('velocity_layanan_repeat', ['velocity_layanan_image','velocity_layanan','velocity_icon','velocity_text','velocity_link'], 3, {
+    addLabel: 'Add Layanan',
+    labels: {
+      'velocity_layanan_image': 'Gambar',
+      'velocity_layanan': 'Judul Layanan',
+      'velocity_icon': 'Icon Layanan (Font Awesome v5)',
+      'velocity_text': 'Deskripsi Layanan',
+      'velocity_link': 'Link Layanan'
+    },
+    descriptions: {
+      'velocity_layanan_image': 'Ukuran 410 x 270 pixel.',
+      'velocity_icon': 'Isi nama icon, list: fontawesome.com/v5/search?o=r&m=free'
+    }
+  });
   initRepeater('velocity_gallery_repeat', ['velocity_gallery_image'], 10);
   initRepeater('velocity_logo_repeat', ['velocity_logo_image'], 10);
 });

@@ -3,6 +3,8 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
+require_once get_stylesheet_directory() . '/inc/customizer/class-editor-control.php';
+
 add_action('customize_register', function ($wp_customize) {
     $wp_customize->add_panel('panel_perusahaan1', [
         'priority' => 10,
@@ -152,11 +154,11 @@ add_action('customize_register', function ($wp_customize) {
         'default' => '',
         'sanitize_callback' => 'wp_kses_post',
     ]);
-    $wp_customize->add_control('velocity_sambutan', [
+    $wp_customize->add_control(new Velocity_Editor_Control($wp_customize, 'velocity_sambutan', [
         'label' => esc_html__('Isi Sambutan', 'justg'),
         'section' => 'velocity_sambutan_section',
-        'type' => 'textarea',
-    ]);
+        'settings' => 'velocity_sambutan',
+    ]));
     $wp_customize->add_setting('velocity_link_sambutan', [
         'default' => '',
         'sanitize_callback' => 'esc_url_raw',
