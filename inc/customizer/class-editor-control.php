@@ -3,6 +3,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
+if (class_exists('WP_Customize_Control')) {
 class Velocity_Editor_Control extends WP_Customize_Control
 {
     public $type = 'velocity_editor';
@@ -16,4 +17,5 @@ class Velocity_Editor_Control extends WP_Customize_Control
         ]);
         echo '<script>(function(){var id=' . json_encode($editor_id) . ';var setting=' . json_encode($this->id) . ';function bind(){if(window.tinymce&&tinymce.get(id)){var ed=tinymce.get(id);var sync=function(){wp.customize(setting).set(ed.getContent());};ed.on("change",sync);ed.on("keyup",sync);}else{setTimeout(bind,200);}}bind();})();</script>';
     }
+}
 }

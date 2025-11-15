@@ -3,9 +3,8 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-require_once get_stylesheet_directory() . '/inc/customizer/class-editor-control.php';
-
 add_action('customize_register', function ($wp_customize) {
+    require_once get_stylesheet_directory() . '/inc/customizer/class-editor-control.php';
     $wp_customize->add_panel('panel_perusahaan1', [
         'priority' => 10,
         'title' => esc_html__('Velocity Perusahaan1', 'justg'),
