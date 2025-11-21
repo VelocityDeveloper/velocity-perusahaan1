@@ -1,0 +1,18 @@
+.velocity-repeater-item { border:1px solid #ccd0d4; margin:8px 0; background:#fff; }
+.velocity-repeater-header { padding:8px 12px; background:#f6f7f7; border-bottom:1px solid #ccd0d4; cursor:pointer; display:flex; justify-content:space-between; align-items:center; }
+.velocity-repeater-header .title { font-weight:600; }
+.velocity-repeater-header .dashicons { color:#555; }
+.velocity-repeater-body { padding:12px; display:none; }
+.velocity-repeater-item.is-open .velocity-repeater-body { display:block; }
+.velocity-image-frame { border:1px solid #ccd0d4; background:#fff; padding:6px; margin:6px 0; }
+.velocity-image-frame img { max-width:100%; height:auto; display:block; }
+.velocity-image-actions { display:flex; gap:8px; margin:8px 0; }
+.velocity-repeater-body .widefat { display:block; width:100%; margin:8px 0; }
+.velocity-repeater-body label { display:block; font-weight:600; margin-top:8px; }
+.velocity-repeater-body .description { margin-bottom:6px; }
+.velocity-repeater-actions { margin-top:8px; }
+.velocity-repeater-actions .button { margin-right:6px; }
+.description { display:block; color:#646970; margin-bottom:4px; }
+ .velocity-hidden{ display:none !important; }
+ .velocity-repeater-body .button{ margin-right:6px; }
+/* keep default textarea visible to avoid blank panel if JS fails */

@@ -31,6 +31,9 @@ function velocitychild_theme_setup()
 {
     // Load justg_child_enqueue_parent_style after theme setup
     add_action('wp_enqueue_scripts', 'justg_child_enqueue_parent_style', 20);
+    add_action('wp_enqueue_scripts', function(){
+        wp_enqueue_style('bootstrap-icons', 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css', [], null);
+    }, 21);
 
     //remove action from Parent Theme
     remove_action('justg_header', 'justg_header_menu');

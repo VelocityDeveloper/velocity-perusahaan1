@@ -101,7 +101,7 @@ add_action('customize_register', function ($wp_customize) {
         'priority' => 10,
     ]);
     $wp_customize->add_setting('velocity_layanan_repeat', [
-        'default' => [],
+        'default' => '[]',
         'sanitize_callback' => function ($json) {
             if (is_string($json)) {
                 $arr = json_decode($json, true);
@@ -183,7 +183,7 @@ add_action('customize_register', function ($wp_customize) {
         'type' => 'text',
     ]);
     $wp_customize->add_setting('velocity_gallery_repeat', [
-        'default' => [],
+        'default' => '[]',
         'sanitize_callback' => function ($json) {
             if (is_string($json)) {
                 $arr = json_decode($json, true);
@@ -254,7 +254,7 @@ add_action('customize_register', function ($wp_customize) {
         'type' => 'text',
     ]);
     $wp_customize->add_setting('velocity_logo_repeat', [
-        'default' => [],
+        'default' => '[]',
         'sanitize_callback' => function ($json) {
             if (is_string($json)) {
                 $arr = json_decode($json, true);
@@ -278,7 +278,7 @@ add_action('customize_register', function ($wp_customize) {
         },
     ]);
     $wp_customize->add_control(new WP_Customize_Control($wp_customize, 'velocity_logo_repeat', [
-        'label' => esc_html__('Gambar Logo', 'justg'),
+        'label' => esc_html__('Client Logos', 'justg'),
         'section' => 'velocity_logo_section',
         'settings' => 'velocity_logo_repeat',
         'type' => 'hidden',
@@ -287,4 +287,7 @@ add_action('customize_register', function ($wp_customize) {
 
 add_action('customize_controls_enqueue_scripts', function () {
     wp_enqueue_script('velocity-customizer-controls', get_stylesheet_directory_uri() . '/assets/customizer/customizer-controls.js', ['jquery', 'customize-controls'], null, true);
+    wp_enqueue_style('velocity-customizer-controls', get_stylesheet_directory_uri() . '/assets/customizer/customizer-controls.css', [], null);
+    if (function_exists('wp_enqueue_media')) { wp_enqueue_media(); }
+    if (function_exists('wp_enqueue_editor')) { wp_enqueue_editor(); }
 });

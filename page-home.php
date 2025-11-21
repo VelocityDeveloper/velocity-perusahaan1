@@ -36,7 +36,7 @@ if (velocitytheme_option('velocity_banner1')) { ?>
                         </div>
 
                         <div class="icon-layanan">
-                            <i class="fas fa-<?php echo $layanan['velocity_icon']; ?>"> </i>
+                            <i class="bi bi-<?php echo $layanan['velocity_icon']; ?>"></i>
                         </div>
 
                         <div class="p-3">
