@@ -113,7 +113,9 @@ function logErr(err, ctx){
     try{ arr=JSON.parse(JSON.stringify(arr)); }catch(e){}
     if(arr.length===0){ var obj={}; fields.forEach(function(f){obj[f]='';}); arr=[obj]; }
     var list=$('<div class="velocity-repeater-list"/>'); var addText=(meta&&meta.addLabel)?meta.addLabel:'Add'; var add=$('<button type="button" class="button"></button>').text(addText);
-    function render(){
+    var openIndex=0;
+    function render(targetIndex){
+      if(typeof targetIndex==='number'){ openIndex=targetIndex; }
       list.empty();
       arr.forEach(function(item,idx){
         var row=$('<div class="velocity-repeater-item"/>');
@@ -124,6 +126,7 @@ function logErr(err, ctx){
           var open=row.toggleClass('is-open').hasClass('is-open');
           body.toggle(open);
           header.find('.dashicons').toggleClass('dashicons-arrow-down', open).toggleClass('dashicons-arrow-right', !open);
+          if(open){ openIndex=idx; }
         });
         var itemActionsWrap=null;
         fields.forEach(function(f){
@@ -208,7 +211,7 @@ function logErr(err, ctx){
           body.append(del);
         }
         row.append(header).append(body);
-        var defaultOpen = (idx===0);
+        var defaultOpen = (idx===openIndex);
         row.toggleClass('is-open', defaultOpen);
         body.toggle(defaultOpen);
         header.find('.dashicons').toggleClass('dashicons-arrow-down', defaultOpen).toggleClass('dashicons-arrow-right', !defaultOpen);
@@ -216,9 +219,9 @@ function logErr(err, ctx){
       });
     }
     function sync(){ var next; try{ next=JSON.parse(JSON.stringify(arr)); }catch(e){ next=arr; } setVal(id,next); }
-    add.on('click',function(){ if(arr.length>=limit) return; var obj={}; fields.forEach(function(f){obj[f]='';}); arr=[].concat(arr,[obj]); render(); sync(); });
+    add.on('click',function(){ if(arr.length>=limit) return; var obj={}; fields.forEach(function(f){obj[f]='';}); arr=[].concat(arr,[obj]); render(arr.length-1); sync(); });
     el.append(list).append(add);
-    render();
+    render(openIndex);
   }
 
   initRepeater('velocity_layanan_repeat', ['velocity_layanan_image','velocity_layanan','velocity_icon','velocity_text','velocity_link'], 3, {
