@@ -11,7 +11,7 @@ if (!function_exists('justg_widgets_init')) {
                 'description'   => __('Main sidebar widget area', 'justg'),
                 'before_widget' => '<aside id="%1$s" class="widget %2$s">',
                 'after_widget'  => '</aside>',
-                'before_title'  => '<h3 class="widget-title fw-bold mb-4"><span>',
+                'before_title'  => '<h3 class="widget-title fw-bold mb-3 pb-2"><span>',
                 'after_title'   => '</span></h3>',
                 'show_in_rest'   => false,
             )
@@ -71,27 +71,6 @@ if (!function_exists('justg_right_sidebar_check')) {
     }
 }
 
-function velocity_allpage()
-{
-    if (is_singular('post') && !current_user_can('administrator')) {
-        global $post;
-        $postID         = $post->ID;
-        $count_key      = 'hit';
-        $count          = get_post_meta($postID, $count_key, true);
-
-
-        if ($count == '') {
-            $count      = 0;
-            delete_post_meta($postID, $count_key);
-            add_post_meta($postID, $count_key, '0');
-        } else {
-            $count++;
-            update_post_meta($postID, $count_key, $count);
-        }
-    }
-}
-add_action('wp', 'velocity_allpage');
-
 /*******  Widget Velocity Recent Posts  *******/
 
 add_action('init', 'velocity_recent_post_register');
@@ -149,6 +128,7 @@ function velocity_recent_post_widget($args, $vars = array())
     $tampil_waktu = $vars['tampil_waktu'];
     $tampil_excerpt = $vars['tampil_excerpt'];
     $jumlah_excerpt = $vars['jumlah_excerpt'];
+
     if ($urut_berdasarkan == "view") {
         $vtr_query = new WP_Query(
             array(
@@ -174,11 +154,21 @@ function velocity_recent_post_widget($args, $vars = array())
     echo "<div class='vrp-content'>";
     if ($vtr_query->have_posts()) :  while ($vtr_query->have_posts()) : $vtr_query->the_post();
             $post_id = get_the_ID();
-            $comments_count = wp_count_comments($post_id); ?>
+            $aspect_ratio = '100%';
+            if (absint($lebar_thumb) > 0 && absint($tinggi_thumb) > 0) {
+                $aspect_ratio = round((absint($tinggi_thumb) / absint($lebar_thumb)) * 100, 2) . '%';
+            }
+            ?>
             <div class="row m-0 vrp-post-list border-bottom py-2">
                 <div class="col-4 p-1">
                     <?php if ($tampil_thumbnail == "ya") {
-                        echo do_shortcode('[resize-thumbnail width="200" height="200" linked="true" class="w-100"]');
+                        echo velocitychild_get_post_thumbnail_html(
+                            $post_id,
+                            array(
+                                'ratio_style' => '--bs-aspect-ratio:' . $aspect_ratio . ';',
+                                'wrapper_class' => 'rounded overflow-hidden',
+                            )
+                        );
                     } ?>
                 </div>
 
@@ -186,7 +176,7 @@ function velocity_recent_post_widget($args, $vars = array())
                     <div class="vrp-title"><a class="text-dark" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></div>
 
                     <?php if ($tampil_waktu == "ya") { ?>
-                        <small class="text-muted"><i class="far fa-clock"></i> <?php echo get_the_date('j F Y', $post_id); ?></small>
+                        <small class="text-muted"><?php echo velocitychild_get_bootstrap_icon_svg('clock', 'me-1 align-text-bottom'); ?><?php echo esc_html(get_the_date('j F Y', $post_id)); ?></small>
                     <?php } ?>
 
                     <?php
@@ -203,7 +193,7 @@ function velocity_recent_post_widget($args, $vars = array())
     if (!$all_cat) {
         echo '<div class="vrp-more"><a href="' . get_category_link($kategori_post) . '">View All</a></div>';
     }
-    wp_reset_query();
+    wp_reset_postdata();
     echo $after_widget;
 }
 

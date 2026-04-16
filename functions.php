@@ -23,6 +23,8 @@ $inc = get_stylesheet_directory() . '/inc';
 $includes = [
     'enqueue.php',
     'function-child.php',
+    'media.php',
+    'icons.php',
     'widget.php',
     'shortcodes.php'
 ];

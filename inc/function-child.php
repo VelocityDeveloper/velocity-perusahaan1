@@ -29,13 +29,8 @@ function velocity_categories()
 add_action('after_setup_theme', 'velocitychild_theme_setup', 9);
 function velocitychild_theme_setup()
 {
-    // Load justg_child_enqueue_parent_style after theme setup
     add_action('wp_enqueue_scripts', 'justg_child_enqueue_parent_style', 20);
-    add_action('wp_enqueue_scripts', function(){
-        wp_enqueue_style('bootstrap-icons', 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css', [], null);
-    }, 21);
 
-    //remove action from Parent Theme
     remove_action('justg_header', 'justg_header_menu');
     remove_action('justg_do_footer', 'justg_the_footer_open');
     remove_action('justg_do_footer', 'justg_the_footer_content');

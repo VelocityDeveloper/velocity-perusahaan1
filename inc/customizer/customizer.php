@@ -85,15 +85,6 @@ add_action('customize_register', function ($wp_customize) {
         'section' => 'velocity_banner',
         'settings' => 'velocity_banner2',
     ]));
-    $wp_customize->add_setting('velocity_page_image', [
-        'default' => '',
-        'sanitize_callback' => 'esc_url_raw',
-    ]);
-    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'velocity_page_image', [
-        'label' => esc_html__('Page Header Image', 'justg'),
-        'section' => 'velocity_banner',
-        'settings' => 'velocity_page_image',
-    ]));
 
     $wp_customize->add_section('velocity_layanan_section', [
         'panel' => 'panel_perusahaan1',
@@ -283,6 +274,14 @@ add_action('customize_register', function ($wp_customize) {
         'settings' => 'velocity_logo_repeat',
         'type' => 'hidden',
     ]));
+
+    $wp_customize->remove_control('velocity_page_image');
+    $wp_customize->remove_setting('velocity_page_image');
+    $wp_customize->remove_control('color_theme');
+    $wp_customize->remove_setting('color_theme');
+    $wp_customize->remove_control('background_themewebsite');
+    $wp_customize->remove_setting('background_themewebsite');
+    $wp_customize->remove_section('header_image');
 });
 
 add_action('customize_controls_enqueue_scripts', function () {

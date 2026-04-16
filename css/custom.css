@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
 [data-bs-theme=light] body {
-    font-family: 'PT Sans', sans-serif !important;
+    font-family: 'Inter', sans-serif !important;
     font-size: 13px !important;
     background-color: #343434;
 }
@@ -106,7 +108,7 @@
     position: relative;
 }
 .widget > *:not(.widget-title):not(#searchform):not(.customize-partial-edit-shortcut) {
-    padding: 0.35rem;
+    padding: 0.35rem 0;
     border: 0px solid var(--bs-dark-bg-subtle);
     /* background-color: var(--bs-white); */
     position: relative;
@@ -129,13 +131,14 @@
     position: relative;
 }
 .widget ul > li:before {
-    content: '\f0da';
-    font-family: 'FontAwesome';
-    color: var(--bs-primary);
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--bs-primary);
     position: absolute;
-    left: 0px;
-    top: 0;
-    display: inline-block;
+    left: 0;
+    top: 0.45rem;
 }
 .widget ul li {
 	display: block;
@@ -224,7 +227,7 @@
 }
 .velocity-banner-title {
     font-size: 6.7vw !important;
-    font-family: Calibri, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+    font-family: 'Inter', sans-serif;
 }
 .velocity-banner-subtitle {
     font-size: 2vw !important;
@@ -261,16 +264,21 @@
 	max-height: 75px;
 	overflow: hidden;
 }
-.h-contact span {
+.h-contact .contact-icon {
     width: auto;
     height: auto;
     border: 1px solid;
     padding: 10px;
     border-radius: 50%;
-    font-size: 21px;
     position: absolute;
     left: 5px;
     top: 7px;
+    box-sizing: content-box;
+}
+.h-contact .contact-icon.bi {
+    width: 21px;
+    height: 21px;
+    display: block;
 }
 .icon-layanan {
     display: inline-block;
@@ -489,7 +497,7 @@ a:hover {
     }
     .dropdown-menu {
         text-transform: uppercase;
-        font-family: Calibri, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+        font-family: 'Inter', sans-serif;
         font-size: 16px;
     }
     #primary-menu > li > a {
@@ -497,8 +505,8 @@ a:hover {
         color: var(--bs-light);
         position: relative;
         text-transform: uppercase;
-        font-family: Calibri, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
-        font-size: 16px;
+        font-family: 'Inter', sans-serif;
+        font-size: 0.9rem;
         padding: 0 0.9rem;
         margin: 0;
     }    
@@ -507,7 +515,7 @@ a:hover {
     #primary-menu > li > a:hover {
         color: var(--bs-light);
     }
-    .pr-md-0 {
+    .pe-md-0 {
         padding-right: 0 !important;
     }
     .vdlogo::before {
@@ -530,5 +538,8 @@ a:hover {
     }
     .page-banner {
         padding: 55px 0 40px !important;
+    }
+    .offcanvas-body .dropdown-toggle::after {
+        top: 15px;
     }
 }
