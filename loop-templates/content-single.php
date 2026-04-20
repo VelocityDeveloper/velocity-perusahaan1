@@ -8,6 +8,9 @@
 
 // Exit if accessed directly.
 defined('ABSPATH') || exit;
+
+$categories_list = get_the_category_list(', ');
+$tags_list       = get_the_tag_list('', ', ');
 ?>
 
 <article <?php post_class('block-primary'); ?> id="post-<?php the_ID(); ?>">
@@ -41,10 +44,17 @@ defined('ABSPATH') || exit;
 
     </div><!-- .entry-content -->
 
-    <footer class="entry-footer">
-
-        <?php justg_entry_footer(); ?>
-
+    <footer class="entry-footer single-post-footer">
+        <?php if ($categories_list || $tags_list) : ?>
+            <div class="single-post-meta mb-2">
+                <?php if ($categories_list) : ?>
+                    <span class="me-3">Posted in <?php echo wp_kses_post($categories_list); ?></span>
+                <?php endif; ?>
+                <?php if ($tags_list) : ?>
+                    <span class="single-post-meta-row">Tagged <?php echo wp_kses_post($tags_list); ?></span>
+                <?php endif; ?>
+            </div>
+        <?php endif; ?>
     </footer><!-- .entry-footer -->
 
 </article><!-- #post-## -->

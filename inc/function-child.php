@@ -115,3 +115,30 @@ function velocity_title()
         return '<h1 class="velocity-postheader velocity-judul text-white">Search Results for: "' . get_search_query() . '"</h1>';
     }
 }
+if (!function_exists('justg_post_nav')) {
+    function justg_post_nav()
+    {
+        $previous = is_attachment() ? get_post(get_post()->post_parent) : get_adjacent_post(false, '', true);
+        $next     = get_adjacent_post(false, '', false);
+
+        if (!$next && !$previous) {
+            return;
+        }
+        ?>
+        <nav class="navigation post-navigation block-primary pt-2" aria-label="<?php esc_attr_e('Post navigation', 'justg'); ?>">
+            <div class="row g-2 justify-content-between align-items-start">
+                <?php if (get_previous_post_link()) : ?>
+                    <div class="col-12 col-md-6">
+                        <?php previous_post_link('%link', '<span class="d-flex w-100 align-items-start text-decoration-none text-break"><span class="me-1" aria-hidden="true">&#8249;</span><span>%title</span></span>'); ?>
+                    </div>
+                <?php endif; ?>
+                <?php if (get_next_post_link()) : ?>
+                    <div class="col-12 col-md-6 ms-md-auto text-md-end">
+                        <?php next_post_link('%link', '<span class="d-flex w-100 align-items-start justify-content-md-end text-decoration-none text-break text-md-end"><span>%title</span><span class="ms-1" aria-hidden="true">&#8250;</span></span>'); ?>
+                    </div>
+                <?php endif; ?>
+            </div>
+        </nav>
+        <?php
+    }
+}

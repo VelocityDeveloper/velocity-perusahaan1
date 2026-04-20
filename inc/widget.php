@@ -176,7 +176,7 @@ function velocity_recent_post_widget($args, $vars = array())
                     <div class="vrp-title"><a class="text-dark" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></div>
 
                     <?php if ($tampil_waktu == "ya") { ?>
-                        <small class="text-muted"><?php echo velocitychild_get_bootstrap_icon_svg('clock', 'me-1 align-text-bottom'); ?><?php echo esc_html(get_the_date('j F Y', $post_id)); ?></small>
+                        <small class="text-muted my-1 d-block"><?php echo velocitychild_get_bootstrap_icon_svg('calendar', 'me-1 align-text-bottom'); ?><?php echo esc_html(get_the_date('j F Y', $post_id)); ?></small>
                     <?php } ?>
 
                     <?php

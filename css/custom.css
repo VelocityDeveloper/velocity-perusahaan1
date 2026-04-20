@@ -265,20 +265,24 @@
 	overflow: hidden;
 }
 .h-contact .contact-icon {
-    width: auto;
-    height: auto;
-    border: 1px solid;
-    padding: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border: 1px solid currentColor;
     border-radius: 50%;
     position: absolute;
-    left: 5px;
-    top: 7px;
-    box-sizing: content-box;
+    left: 0;
+    top: 1px;
+    line-height: 1;
+    box-sizing: border-box;
 }
-.h-contact .contact-icon.bi {
-    width: 21px;
-    height: 21px;
+.h-contact .contact-icon .contact-icon-svg {
+    width: 22px;
+    height: 22px;
     display: block;
+    flex: 0 0 24px;
 }
 .icon-layanan {
     display: inline-block;

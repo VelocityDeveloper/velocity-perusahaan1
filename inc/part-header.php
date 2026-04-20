@@ -14,7 +14,7 @@
             <div class="row my-3 mb-md-0 mx-sm-0 mx-2">
                 <?php if (velocitytheme_option('velocity_address')) : ?>
                     <div class="col-md">
-                        <div class="h-contact"><?php echo velocitychild_get_bootstrap_icon_svg('house-fill', 'contact-icon colortheme'); ?>
+                        <div class="h-contact"><span class="contact-icon colortheme"><?php echo velocitychild_get_bootstrap_icon_svg('house-fill', 'contact-icon-svg'); ?></span>
                             <div class="text-dark mb-1">Address</div>
                             <div class="text-secondary mb-2"><small><?php echo esc_html(velocitytheme_option('velocity_address')); ?></small></div>
                         </div>
@@ -22,7 +22,7 @@
                 <?php endif; ?>
                 <?php if (velocitytheme_option('velocity_phone')) : ?>
                     <div class="col-md">
-                        <div class="h-contact"><?php echo velocitychild_get_bootstrap_icon_svg('telephone-fill', 'contact-icon colortheme'); ?>
+                        <div class="h-contact"><span class="contact-icon colortheme"><?php echo velocitychild_get_bootstrap_icon_svg('telephone-fill', 'contact-icon-svg'); ?></span>
                             <div class="text-dark mb-1">Phone</div>
                             <div class="text-secondary mb-2"><small><a class="text-secondary" href="tel:<?php echo esc_attr(velocitytheme_option('velocity_phone')); ?>"><?php echo esc_html(velocitytheme_option('velocity_phone')); ?></a></small></div>
                         </div>
@@ -30,7 +30,7 @@
                 <?php endif; ?>
                 <?php if (velocitytheme_option('velocity_email')) : ?>
                     <div class="col-md">
-                        <div class="h-contact"><?php echo velocitychild_get_bootstrap_icon_svg('envelope-fill', 'contact-icon colortheme'); ?>
+                        <div class="h-contact"><span class="contact-icon colortheme"><?php echo velocitychild_get_bootstrap_icon_svg('envelope-fill', 'contact-icon-svg'); ?></span>
                             <div class="text-dark mb-1">Email</div>
                             <div class="mb-2"><small><a class="text-secondary" href="mailto:<?php echo esc_attr(velocitytheme_option('velocity_email')); ?>"><?php echo esc_html(velocitytheme_option('velocity_email')); ?></a></small></div>
                         </div>
@@ -84,9 +84,9 @@
 
 <?php if (!is_front_page()) : ?>
     <header class="entry-header mb-5">
-        <?php $pagebg = velocitytheme_option('velocity_page_image'); ?>
+        <?php $pagebg = get_header_image(); ?>
         <?php if ($pagebg) { ?>
-            <div class="page-banner position-relative overflow-hidden">
+            <div class="page-banner position-relative overflow-hidden" style="background-image: url('<?php echo esc_url($pagebg); ?>');">
                 <div class="overelay position-absolute start-0 top-0 h-100 w-100" style="background-color: rgba(0,0,0,0.2);"></div>
                 <div class="container">
                     <div class="row m-0 align-items-center">
@@ -99,10 +99,4 @@
             </div>
         <?php } ?>
     </header>
-
-    <style>
-        .page-banner {
-            background-image: url(<?php echo esc_url($pagebg); ?>);
-        }
-    </style>
 <?php endif; ?>

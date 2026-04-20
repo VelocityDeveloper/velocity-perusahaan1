@@ -275,13 +275,10 @@ add_action('customize_register', function ($wp_customize) {
         'type' => 'hidden',
     ]));
 
-    $wp_customize->remove_control('velocity_page_image');
-    $wp_customize->remove_setting('velocity_page_image');
     $wp_customize->remove_control('color_theme');
     $wp_customize->remove_setting('color_theme');
     $wp_customize->remove_control('background_themewebsite');
     $wp_customize->remove_setting('background_themewebsite');
-    $wp_customize->remove_section('header_image');
 });
 
 add_action('customize_controls_enqueue_scripts', function () {
